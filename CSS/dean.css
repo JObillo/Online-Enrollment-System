@@ -1,0 +1,505 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;600&display=swap');
+
+/* Root Variables */
+:root {
+    --main-color: #22BAA0;
+    --color-dark: #34425A;
+    --text-grey: #B0B0B0;
+    --font-family: 'Merriweather', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+.header-container{
+    background: rgba(56, 141, 207, 1);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: white;
+    border-bottom: 10px solid gray;
+    height: 100px; /* Fixed height for header */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Make sure the header is on top of other elements */
+}
+
+.logo {
+    height: 70px;
+    padding-left: 20px;
+}
+
+.header h1 {
+    padding-left: 20px;
+}
+.sidebar {
+    position: fixed;
+    top: 100px; /* Push the sidebar below the header */
+    left: 0;
+    height: calc(100% - 100px); /* Remaining height after the header */
+    width: 165px;
+    background: #2b2b2b;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures bottom alignment for the log-out */
+    padding-top: 20px;
+    transition: all 0.3s ease;
+    overflow-y: auto; /* Allow scrolling for overflowing content */
+    z-index: 999;
+}
+
+.side-content {
+    flex: 1; /* This pushes the log-out button to the bottom */
+    overflow-y: auto; /* Adds scroll behavior for long content */
+}
+
+
+.sidebar .log-out {
+    margin-top: auto; /* Push the log-out button to the bottom */
+    padding: 1rem;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.sidebar .log-out:hover {
+    background-color: red;
+}
+
+/* Optional Styling for the Sidebar and Menu */
+.profile {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.profile-img {
+    height: 80px;
+    width: 80px;
+    display: inline-block;
+    margin: 0 auto 0.5rem auto;
+    border: 3px solid #899DC1;
+    border-radius: 50%;
+    background-size: cover;
+}
+
+.profile h4 {
+    color: #fff;
+    font-weight: 500;
+}
+
+.profile small {
+    color: #899DC1;
+    font-weight: 600;
+}
+
+.side-menu ul {
+    text-align: center;
+}
+
+.side-menu a {
+    display: block;
+    padding: 1.2rem 0;
+    color: #fff;
+    transition: background 0.3s ease;
+}
+
+.side-menu a.active, .side-menu a:hover {
+    background: #2B384E;
+    color: #fff;
+}
+
+.side-menu .dropdown a .dropdown-icon {
+    font-size: 1.2rem;
+    margin-left: auto; /* This will push the arrow to the right */
+    transition: transform 0.3s ease;
+    color: #fff;
+}
+
+.profile {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.profile-img {
+    height: 80px;
+    width: 80px;
+    display: inline-block;
+    margin: 0 auto 0.5rem auto;
+    border: 3px solid #899DC1;
+    border-radius: 50%;
+    background-size: cover;
+}
+
+.profile h4 {
+    color: #fff;
+    font-weight: 500;
+}
+
+.profile small {
+    color: #899DC1;
+    font-weight: 600;
+}
+
+.side-menu ul {
+    text-align: center;
+}
+
+.side-menu a {
+    display: block;
+    padding: 1.2rem 0;
+    color: #fff;
+    transition: background 0.3s ease;
+}
+
+.side-menu a.active,
+.side-menu a:hover {
+    background: #2B384E;
+    color: #fff;
+}
+
+.side-menu .dropdown a {
+    display: flex;
+    align-items: center;
+    padding: 1.2rem 1rem;
+    color: #fff;
+}
+
+.side-menu .dropdown a .dropdown-icon {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+    transition: transform 0.3s ease;
+    color: #fff;
+}
+
+.side-menu .dropdown a .las.la-user-alt {
+    margin-left: 29px;
+}
+
+.dropdown.active .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.side-menu .dropdown-content {
+    display: none;
+    flex-direction: column;
+    background: #444;
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    text-align: left;
+}
+
+.side-menu .dropdown.active .dropdown-content {
+    display: flex;
+}
+
+.side-menu .dropdown-content li a {
+    padding: 0.8rem 1.6rem;
+    font-size: 0.9rem;
+    color: #ddd;
+}
+
+
+.side-menu .dropdown-content li a:hover {
+    background-color: #555;
+    color: #fff;
+}
+
+.side-content {
+    height: calc(100vh - 60px);
+    overflow: auto;
+}
+
+.side-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.side-content::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+.side-content::-webkit-scrollbar-thumb {
+    background: #b0b0b0;
+    border-radius: 10px;
+}
+
+.side-content::-webkit-scrollbar-thumb:hover {
+    background: #b30000;
+}
+
+
+
+/* Main Content */
+.main-content {
+    margin-left: 165px;
+    width: calc(100% - 165px);
+    transition: margin-left 300ms;
+    margin-top: 100px;
+}
+
+/* Header */
+header {
+    position: fixed;
+    right: 0;
+    top: 0;
+    left: 165px;
+    z-index: 100;
+    height: 60px;
+    box-shadow: 0px 5px 5px -5px rgb(0 0 0 / 10%);
+    background: #fff;
+    transition: left 300ms;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5.8px;
+    background-color: #388DCF;
+}
+
+.header-menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 0.5rem;
+}
+
+.header-menu label,
+.header-menu .notify-icon {
+    margin-right: 2rem;
+    position: relative;
+}
+
+.notify-icon span:last-child {
+    position: absolute;
+    background: var(--main-color);
+    height: 16px;
+    width: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    right: -5px;
+    top: -5px;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Page Header and Content */
+.page-header {
+    padding: 1.3rem 1rem;
+    background: rgba(217, 217, 217, 1);
+    border-bottom: 1px solid #dee2e8;
+    margin-top: 10px;
+}
+
+.page-header h1, .page-header small {
+    color: #74767d;
+}
+
+.page-content {
+    margin-left: 80px;
+    width: calc(100% - 165px);
+    margin-top: 10px;
+    padding: 1.3rem 1rem;
+    background: #f1f4f9;
+}
+
+/* Analytics and Cards */
+.analytics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    box-shadow: 0px 5px 5px -5px rgb(0 0 0 / 10%);
+    background: #fff;
+    padding: 1rem;
+    border-radius: 3px;
+}
+
+.card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-progress small {
+    color: #777;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.card-indicator {
+    margin: 0.7rem 0;
+    height: 10px;
+    border-radius: 4px;
+    background: #e9edf2;
+    overflow: hidden;
+}
+
+.browse, .row{
+    margin-top: 20px;
+}
+.add{
+    margin-left: 5px;
+    margin-top: 20px;
+}
+.record-search, .status{
+    height: 25px;
+    border-radius: 3px;
+    width: 200px;
+    margin-left: 5px;
+}
+
+
+/* Tables */
+.table-responsive {
+    width: 100%;
+    overflow: auto;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table thead tr {
+    background: #e9edf2;
+}
+
+table tbody tr {
+    border-bottom: 1px solid #dee2e8;
+}
+
+table thead th, table tbody td {
+    padding: 1rem 0;
+    text-align: left;
+}
+
+.client {
+    display: flex;
+    align-items: center;
+}
+
+.paid {
+    display: inline-block;
+    text-align: center;
+    font-weight: 600;
+    color: var(--main-color);
+    background: #e5f8ed;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 1200px) {
+    .analytics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .analytics {
+        grid-template-columns: 100%;
+    }
+
+    .sidebar {
+        left: -165px;
+        z-index: 90;
+    }
+
+    header {
+        left: 0;
+        width: 100%;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    #menu-toggle:checked ~ .sidebar {
+        left: 0;
+        width: 165px;
+    }
+
+    #menu-toggle:checked ~ .sidebar .side-header span {
+        display: inline-block;
+    }
+
+    #menu-toggle:checked ~ .sidebar .profile,
+    #menu-toggle:checked ~ .sidebar .side-menu a small {
+        display: block;
+    }
+
+    #menu-toggle:checked ~ .sidebar .side-menu a span {
+        font-size: 1.7rem;
+    }
+
+    #menu-toggle:checked ~ .main-content {
+        margin-left: 165px;
+    }
+
+    #menu-toggle:checked ~ header {
+        left: 165px;
+        width: calc(100% - 165px);
+    }
+}
+
+/* Dropdown content initially hidden */
+.dropdown-content {
+    display: none;
+    transition: all 0.3s ease;
+}
+
+/* Show dropdown content when open */
+.dropdown-content.open {
+    display: block;
+}
+
+/* Icon transition for rotation */
+.dropdown-icon {
+    transition: transform 0.3s ease;
+}
+
+/* Rotate the dropdown icon when the dropdown is active */
+.dropdown.active .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+/* Add a transition for smooth rotation */
+.dropdown-icon {
+    transition: transform 0.3s ease;
+}
+
+/* Default state when the dropdown is not active */
+.dropdown.active .dropdown-icon {
+    transform: rotate(180deg); /* Point down */
+}
+
+/* Default icon state */
+.dropdown-icon {
+    transform: rotate(0deg); /* Point up */
+}
+
+.view{
+    margin: 5px; padding: 10px 20px; background-color:  #007bff; color: #fff; border: none; cursor: pointer; border-radius: 4px; }
+    .view:hover{
+    background-color: green;
+}
